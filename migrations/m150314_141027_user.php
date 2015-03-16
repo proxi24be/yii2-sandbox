@@ -5,13 +5,18 @@ use yii\db\Migration;
 
 class m150314_141027_user extends Migration
 {
-    public function up()
+    public function safeUp()
     {
         $this->addColumn('user', 'password', Schema::TYPE_STRING);
     }
 
-    public function down()
+    public function safeDown()
     {
-        $this->dropColumn('user','password');
+        try {
+            $this->dropColumn('user','password');
+        } catch (Exception $e) {
+            echo "(It seems that operation is not supported by the db.)" . PHP_EOL;
+            return true;
+        }
     }
 }
