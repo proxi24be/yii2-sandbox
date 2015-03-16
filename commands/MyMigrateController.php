@@ -20,4 +20,5 @@ use yii\console\controllers\MigrateController;
 class MyMigrateController extends MigrateController
 {
     public $templateFile = '@vendor/myYii/views/migration.php';
+
 }
